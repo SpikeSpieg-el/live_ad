@@ -1,21 +1,17 @@
-vkBridge.send("VKWebAppInit", {})
-        .then(() => {
-            console.log('VK Bridge инициализирован');
-    })
-    .catch((error) => {
-        console.error('Ошибка инициализации VK Bridge:', error);
+vkBridge.send('VKWebAppShowNativeAds', {
+  ad_format: 'interstitial'
+})
+.then((data) => { 
+  if (data.result) {
+      // Реклама была показана
+  } else {
+      console.log('Реклама не была показана');
+  }
+})
+.catch((error) => { 
+  if (error.error_data && error.error_data.error_code === 20) {
+      console.log('Нет доступной рекламы: ' + error.error_data.error_reason);
+  } else {
+      console.log('Произошла ошибка: ', error);
+  }
 });
-
-    vkBridge.send('VKWebAppShowBannerAd', {
-        banner_location: 'top'
-        })
-       .then((data) => { 
-          if (data.result) {
-            // Баннерная реклама отобразилась
-          }
-        })
-        .catch((error) => {
-          // Ошибка
-          console.log(error);
-        });
-        
