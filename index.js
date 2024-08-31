@@ -18,3 +18,4 @@ vkBridge.send("VKWebAppInit", {})
           // Ошибка
           console.log(error);
         });
+        
