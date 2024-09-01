@@ -13,6 +13,19 @@ vkBridge.send("VKWebAppInit", {})
     console.error('Ошибка инициализации VK Bridge:', error);
 });
 
+vkBridge.send('VKWebAppShowBannerAd', {
+    banner_location: 'top'
+    })
+   .then((data) => { 
+      if (data.result) {
+        // Баннерная реклама отобразилась
+      }
+    })
+    .catch((error) => {
+      // Ошибка
+      console.log(error);
+    });
+
 // Функция для обновления счётчика алмазов на экране
 function updateDiamondCounter() {
     diamondCounter.textContent = diamonds;
