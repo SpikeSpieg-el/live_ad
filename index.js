@@ -1,9 +1,17 @@
+
 // Переменная для хранения количества алмазов
 let diamonds = 0;
 
 // Получаем элементы по id
 const diamondCounter = document.getElementById('diamondCounter');
 const showAdButton = document.getElementById('showAdButton');
+vkBridge.send("VKWebAppInit", {})
+.then(() => {
+    console.log('VK Bridge инициализирован');
+})
+.catch((error) => {
+    console.error('Ошибка инициализации VK Bridge:', error);
+});
 
 // Функция для обновления счётчика алмазов на экране
 function updateDiamondCounter() {
